@@ -15,7 +15,7 @@ include("condb.php");
 			(workdate, m_id, workin)
 			VALUES
 			('$workdate', '$m_id', '$workin')";
-			$result = mysqli_query($condb, $sql) or die ("Error in query: $sql " . mysqli_error($sql));
+			$result = mysqli_query($condb, $sql) or die ("Error in query: $sql " . mysqli_error($condb));
 
 					mysqli_close($condb);
 					if($result){
@@ -45,7 +45,7 @@ include("condb.php");
 			workout='$workout'
 			WHERE m_id=$m_id  AND workdate='$workdate'
 			";
-			$result2 = mysqli_query($condb, $sql2) or die ("Error in query: $sql2 " . mysqli_error($sql2));
+			$result2 = mysqli_query($condb, $sql2) or die ("Error in query: $sql2 " . mysqli_error($condb));
 
 			// echo $sql2;
 			// exit;
