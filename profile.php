@@ -11,14 +11,14 @@ Header("Location: logout.php");
 }
 //query member login
 $queryemp = "SELECT * FROM tbl_emp WHERE m_id=$m_id";
-$resultm = mysqli_query($condb, $queryemp) or die ("Error in query: $queryemp " . mysqli_error());
+$resultm = mysqli_query($condb, $queryemp) or die ("Error in query: $queryemp " . mysqli_error($condb));
 $rowm = mysqli_fetch_array($resultm);
 //เวลาปัจจุบัน
 $timenow = date('H:i:s');
 $datenow = date('Y-m-d');
 //เวลาที่บันทึก
 $queryworkio = "SELECT MAX(workdate) as lastdate, workin, workout FROM tbl_work_io WHERE m_id=$m_id AND workdate='$datenow' ";
-$resultio = mysqli_query($condb, $queryworkio) or die ("Error in query: $queryworkio " . mysqli_error());
+$resultio = mysqli_query($condb, $queryworkio) or die ("Error in query: $queryworkio " . mysqli_error($condb));
 $rowio = mysqli_fetch_array($resultio);
 print_r($rowio);
 ?>
@@ -92,7 +92,7 @@ print_r($rowio);
           <h3>List</h3>
           <?php
           $querylist = "SELECT * FROM tbl_work_io WHERE m_id = $m_id ORDER BY workdate DESC";
-          $resultlist = mysqli_query($condb, $querylist)  or die("Error:" . mysqli_error($querylist));
+          $resultlist = mysqli_query($condb, $querylist)  or die ("Error:" . mysqli_error($condb));
           echo "
           <table class='table table-bordered table-striped'>
           <thead>
